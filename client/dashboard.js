@@ -1,7 +1,14 @@
 // In your JS files
 const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://localhost:5000/api/forms'
-    : 'https://your-live-backend-url.com/api/forms';
+    : 'https://form-builder-api-irp2.onrender.com/api/forms';
+    
+const SOCKET_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? 'http://localhost:5000'
+    : 'https://form-builder-api-irp2.onrender.com';
+
+
+    
 
 const urlParams = new URLSearchParams(window.location.search);
 const formId = urlParams.get('id');
@@ -21,7 +28,9 @@ let allResponses = [];
 
 // --- 1. INITIALIZE REAL-TIME WEBSOCKETS ---
 // Connect to the backend server
-const socket = io('http://localhost:5000');
+
+// Update the socket initialization
+const socket = io(SOCKET_URL);
 
 // Join the specific room for this form so we only get relevant updates
 socket.emit('join-form-room', formId);

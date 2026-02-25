@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // In your JS files
 const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://localhost:5000/api/forms'
-    : 'https://your-live-backend-url.com/api/forms';
+    : 'https://form-builder-api-irp2.onrender.com/api/forms';
     const urlParams = new URLSearchParams(window.location.search);
     const formId = urlParams.get('id');
 

@@ -1,7 +1,15 @@
 // In your JS files
 const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://localhost:5000/api/forms'
-    : 'https://your-live-backend-url.com/api/forms';
+    : 'https://form-builder-api-irp2.onrender.com/api/forms';
+
+    // --- NEW: Dynamic Socket Initialization ---
+const SOCKET_URL = IS_LOCAL
+    ? 'http://localhost:5000'
+    : 'https://form-builder-api-irp2.onrender.com';
+
+// If you are using Socket.io for real-time dashboard updates:
+const socket = io(SOCKET_URL);
 
 const urlParams = new URLSearchParams(window.location.search);
 const formId = urlParams.get('id');
@@ -93,16 +101,6 @@ publicForm.addEventListener('submit', async (e) => {
   const formData = new FormData(publicForm);
   const answers = [];
 
-// We need to format the answers to match our Backend Schema: [{ questionId, value }]
-  document.getElementById('clear-form-btn').addEventListener('click', () => {
-    if (confirm('Are you sure you want to clear all your answers?')) {
-        const formElement = document.getElementById('public-form'); // Ensure this ID matches your <form> tag
-        formElement.reset();
-        
-        // Optional: Scroll to top after clearing
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-});
   // Format the answers to match our Backend Schema: [{ questionId, value }]
   currentFormQuestions.forEach(q => {
     let value;
@@ -144,6 +142,16 @@ publicForm.addEventListener('submit', async (e) => {
     submitBtn.textContent = 'Submit Response';
     submitBtn.disabled = false;
   }
+});
+// We need to format the answers to match our Backend Schema: [{ questionId, value }]
+  document.getElementById('clear-form-btn').addEventListener('click', () => {
+    if (confirm('Are you sure you want to clear all your answers?')) {
+        const formElement = document.getElementById('public-form'); // Ensure this ID matches your <form> tag
+        formElement.reset();
+        
+        // Optional: Scroll to top after clearing
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 });
 
 // Init
