@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Response Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="http://localhost:5000/socket.io/socket.io.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header style="display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <h1 id="dash-title">Loading Analytics...</h1>
+        <p style="color: #6b7280;">Live Response Dashboard</p>
+      </div>
+      <div class="card" style="margin: 0; padding: 1rem; text-align: center; border-left: 4px solid #10b981;">
+        <h2 style="margin: 0; font-size: 2rem;" id="total-responses">0</h2>
+        <p style="margin: 0; font-size: 0.875rem; color: #6b7280;">Total Responses</p>
+        <button id="download-csv" class="btn" style="background: #10b981; margin-bottom: 1rem;">
+    📥 Download as CSV
+</button>
+      </div>
+    </header>
+
+    <main id="analytics-container" style="margin-top: 2rem;">
+      <p>Loading data...</p>
+    </main>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

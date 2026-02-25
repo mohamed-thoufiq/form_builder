@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Form Builder Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Form Builder Dashboard</h1>
+      <p>Create and manage your forms</p>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Create a New Form</h2>
+        <form id="create-form">
+          <div class="form-group">
+            <label for="title">Form Title</label>
+            <input type="text" id="title" placeholder="e.g., Customer Feedback 2026" required>
+          </div>
+          <div class="form-group">
+            <label for="description">Description (Optional)</label>
+            <textarea id="description" placeholder="What is this form for?"></textarea>
+          </div>
+          <button type="submit" class="btn">Create Form</button>
+          <button id="clear-all-forms-btn" class="btn" style="background: #ef4444; margin-top: 10px;">
+    🗑️ Clear All Forms
+</button>
+        </form>
+      </section>
+
+      <section>
+        <h2>My Forms</h2>
+        <div id="forms-list" class="forms-grid">
+          <p>Loading forms...</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

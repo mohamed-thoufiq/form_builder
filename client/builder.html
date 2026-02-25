@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Editor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    
+    <header>
+      <div>
+        <button class="btn" onclick="window.location.href='index.html'" style="margin-bottom: 1rem; background: #6b7280;">&larr; Back to Dashboard</button>
+        <button class="btn" id="preview-btn" style="margin-bottom: 1rem; background: #10b981; margin-left: 10px;">View Public Form</button>
+        <button class="btn" id="dashboard-btn" style="margin-bottom: 1rem; margin-left: 10px;">View Responses 📊</button>
+      </div>
+      <h1 id="form-title">Loading Form...</h1>
+      <p id="form-description"></p>
+      
+      <div id="save-status" style="display: none; color: #10b981; font-weight: bold; font-size: 0.875rem; margin-top: 0.5rem; transition: opacity 0.3s;">
+        ✓ Saved
+      </div>
+      <button class="btn" id="share-btn" style="background: #6366f1; margin-left: 10px;">
+    🔗 Share Form
+</button>
+    </header>
+
+    <main>
+      <section id="questions-list">
+        </section>
+
+      <section class="card" style="margin-top: 2rem; border-top: 4px solid var(--primary-color);">
+        <h2>Add a Question</h2>
+        <form id="add-question-form">
+          <div class="form-group">
+            <label for="q-type">Question Type</label>
+            <select id="q-type" required>
+              <option value="short">Short Answer</option>
+              <option value="paragraph">Paragraph</option>
+              <option value="mcq">Multiple Choice</option>
+              <option value="checkbox">Checkboxes</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="q-label">Question Text</label>
+            <input type="text" id="q-label" placeholder="e.g., What is your favorite color?" required>
+          </div>
+
+          <div class="form-group" id="options-group" style="display: none;">
+            <label for="q-options">Options (Comma separated)</label>
+            <input type="text" id="q-options" placeholder="Red, Blue, Green">
+            <small style="color: #6b7280;">Separate choices with a comma</small>
+          </div>
+
+          <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem;">
+            <input type="checkbox" id="q-required" style="width: auto;">
+            <label for="q-required" style="margin: 0;">Required Question</label>
+          </div>
+
+          <button type="submit" class="btn">Add Question</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="builder.js"></script>
+  
+</body>
+</html>
