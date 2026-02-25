@@ -15,7 +15,7 @@ const server = http.createServer(app);
 const allowedOrigins = [
     "http://127.0.0.1:5500", 
     "http://localhost:5500",
-    "https://your-project-name.vercel.app" 
+    "https://form-builder-amber-five.vercel.app/"
 ];
 
 app.use(cors({
