@@ -1,15 +1,16 @@
-// In your JS files
-const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+const IS_LOCAL =
+    window.location.hostname === 'localhost' ||
+    window.location.hostname === '127.0.0.1';
+
+const API_URL = IS_LOCAL
     ? 'http://localhost:5000/api/forms'
     : 'https://form-builder-api-irp2.onrender.com/api/forms';
 
-    // --- NEW: Dynamic Socket Initialization ---
 const SOCKET_URL = IS_LOCAL
     ? 'http://localhost:5000'
     : 'https://form-builder-api-irp2.onrender.com';
 
-// If you are using Socket.io for real-time dashboard updates:
-const socket = io(SOCKET_URL);
+const socket = io(SOCKET_URL);;
 
 const urlParams = new URLSearchParams(window.location.search);
 const formId = urlParams.get('id');
